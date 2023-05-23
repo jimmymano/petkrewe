@@ -1,15 +1,19 @@
-=begin
+
 class CartPage
-    def initialize(browser)
-        @browser = browser
+
+    def initialize(driver)
+        @driver = driver
     end
-    @cart_header = '#CartDrawer > div.drawer__fixed-header > div > div.h2.drawer__title'
-    cart_text = @driver.find_element(css:@cart_header).text
+    
+    def cart_text(cart_header) 
+        @driver.find_element(css:cart_header).text
+    end
+
+    def cart_sub(cart_subtotal)
+        @driver.find_element(xpath:cart_subtotal).text    
+    end
+
 end
 
 @cart = CartPage.new(@driver)
 
-def cart_text
-    
-end
-=end

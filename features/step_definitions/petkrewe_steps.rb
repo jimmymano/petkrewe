@@ -13,13 +13,13 @@ When('I click the modal close') do
   @driver.find_element(css:@modal_close).click
 end
 
+#2 Collections/Categories
 When('I click the Shop Our Lobster & Crawfish Collection button') do 
   puts "Clicked Shop Now"
   @wait.until{@driver.find_element(css:@crawfish_link).displayed?}
   @driver.find_element(css:@crawfish_link).click   
 end
-
-#3? PDP
+#3.Product Detail Page
 When('I click Lobster dog costume') do  
   puts "Clicked Product"
   @driver.find_element(css:@lobster_link).click
@@ -28,22 +28,17 @@ end
 When('I click Add To Cart') do
   @driver.find_element(css:@lobster_add).click
   sleep 3
+  @cart = CartPage.new(@driver)
 end
 
-#1.Cart
+#4.Cart Sidebar Verification
 Then('I should see Cart Sidebar') do
-  cart_text = @driver.find_element(css:@cart_header).text
-  puts "#{cart_text}"
-  
-  #expect(cart_text).to eq('CART')
-  expect(cart_text).to eq('CART') 
+  puts "ADDED TO #{@cart.cart_text(@cart_header) }"
+  expect(@cart.cart_text(@cart_header)).to eq('CART') 
 end
 
 Then('I should see Subtotal') do
-  cart_sub = @driver.find_element(xpath:@cart_subtotal).text
-  #@wait.until{cart_sub.displayed?}
-  puts "#{@cart_sub}"
-  expect(cart_sub).to eq('SUBTOTAL')
+  expect(@cart.cart_sub(@cart_subtotal)).to eq("SUBTOTAL")
 end
 
 When('I Add Sesame Street Hoodie To Cart') do
@@ -56,7 +51,7 @@ When('I click Checkout') do
   #@info = InfoPage.new(@driver)
 end
 
-#2.Info
+#5.Info
 When('I enter "<email>" in the email field') do |email|
   
   @wait.until{@driver.find_element(css:'#email').displayed?}
