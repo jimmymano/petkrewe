@@ -45,7 +45,6 @@ Before do |scenario|
     @shop_dog_link = '#shopify-section-1574811335810 > div > div > div > div > div.flex-grid__item.flex-grid__item--33.flex-grid__item--1574811515673.type-advanced > div > a'
     @sesame_link = '#CollectionSection > div.grid.grid--uniform.grid--collection.small--grid--flush > div:nth-child(1) > div > a'
     @sesame_add = '#AddToCartText-4169549447255'
-
 end
 
 

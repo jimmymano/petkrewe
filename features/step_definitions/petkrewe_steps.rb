@@ -28,7 +28,7 @@ end
 When('I click Add To Cart') do
   @driver.find_element(css:@lobster_add).click
   sleep 3
-  @cart = CartPage.new(@driver)
+  @cart = CartSideBar.new(@driver)
 end
 
 #4.Cart Sidebar Verification
@@ -46,48 +46,35 @@ When('I Add Sesame Street Hoodie To Cart') do
 end
 
 When('I click Checkout') do
-  @wait.until{@driver.find_element(css:@checkout_btn).displayed?}
-  @driver.find_element(css:@checkout_btn).click
-  #@info = InfoPage.new(@driver)
+  @cart.click_cart_checkout_btn(@checkout_btn)
+  @info = InfoPage.new(@driver)
 end
 
 #5.Info
-When('I enter "<email>" in the email field') do |email|
-  
-  @wait.until{@driver.find_element(css:'#email').displayed?}
-  @driver.find_element(css:'#email').click
-  @driver.action.send_keys(email).perform
-end
+
 When('I enter {string} in the email field') do |email|
-  @wait.until{@driver.find_element(css:'#email').displayed?}
-  @driver.find_element(css:'#email').click
-  @driver.action.send_keys(email).perform
+  @info.set_contact_email(email)
 end
 
 When('I enter {string} in the First Name field') do |firstname|
-  @driver.find_element(css:'#TextField1').click
-  @driver.action.send_keys(firstname).perform
+  @info.set_first_name(firstname)
 end
 
 When('I enter {string} in the Last Name field') do |lastname|
-  @driver.find_element(css:'#TextField2').click
-  @driver.action.send_keys(lastname).perform
+ @info.set_last_name(lastname)
 end
 
 When('I enter {string} in the Address field') do |address1|
-  @driver.find_element(css:'#address1').click
-  @driver.action.send_keys(address1).perform
+  @info.set_address(address1)
 end
 
 When('I enter {string} in the City field') do |city|
-  @driver.find_element(css:'#TextField6').click
-  @driver.action.send_keys(city).perform
+  @info.set_city(city)
 end
 
 
 When('I enter {string} in the ZIP field') do |zipcode|
-  @driver.find_element(css:'#TextField7').click
-  @driver.action.send_keys(zipcode).perform
+  @info.set_zip_code(zipcode)
 end
 
 #3.Shipping
@@ -98,7 +85,7 @@ When('I click Continue to Shipping button') do
   
   When('I click Standard Shipping button') do 
     @wait.until{@driver.find_element(css:@shipping_header).displayed?}
-    sleep 3
+    sleep 4
   end
   
   Then('I should see Continue to Payment Button') do 
