@@ -1,5 +1,6 @@
 class InfoPage
     def initialize(driver)
+        #Shipping Info
         @driver = driver
         @wait = wait = Selenium::WebDriver::Wait.new(:timeout => 30)
         @email = '#email'
@@ -8,6 +9,13 @@ class InfoPage
         @address = '#address1'
         @city = '#TextField6'
         @zipcode = '#TextField7'
+
+        #Cart Info
+        #cart_item
+        #discount_field
+        #subtotal
+        #total
+        
     end
 
     def set_contact_email(email)

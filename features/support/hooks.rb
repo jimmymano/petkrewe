@@ -23,16 +23,8 @@ Before do |scenario|
     
     @driver = Selenium::WebDriver.for:chrome, options:options
     @wait = wait = Selenium::WebDriver::Wait.new(:timeout => 30)
+    @modal_close = 'body > div:nth-child(14) > div > div > div > div > div > div > button'
     @payment_btn ='#Form2 > div:nth-child(1) > div > div > div.oQEAZ.WD4IV > div:nth-child(1) > button'
-    @username =     '#username'
-    @password =     '#password'
-    @loginBtn =     '#nco_login_submit'
-    @modal_close = '.klaviyo-close-form'
-    @modal_close = '.klaviyo-close-form'
-    @parties_and_orders = '#ncosidemenu > div > ul > li:nth-child(3) > a'
-    @order_history = '#ncosidemenu > div > ul > li:nth-child(3) > ul > li:nth-child(5) > a'
-    @shipping_icon = '#order_history > tbody > tr:nth-child(3) > td.text-center.grid-width-3 > a > span > span.icon-truck.font-30.hide-for-small-only'
-    @tracking_number = '#shipmentTrackingModal > div:nth-child(2) > div.medium-12.columns.shipment-wrapper > div.row.odd > div:nth-child(4) > a'
     @lobster_link = 'div.grid-product:nth-child(1) > div:nth-child(1) > a:nth-child(1) > div:nth-child(2)'
     @lobster_add = '#AddToCart-4684332564567'
     @crawfish_link = 'div.flex-grid__item:nth-child(2) > div:nth-child(1)'

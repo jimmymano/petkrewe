@@ -5,19 +5,17 @@ Given('I am on the site') do
   @driver.manage.window.maximize
   expect(@driver.title).to include 'Pet Krewe | Dog Costumes and Pet Costumes for Halloween'
   puts "Navigate to #{@driver.title}" 
+  @page = Page.new(@driver)
 end
 
 When('I click the modal close') do
-  puts "Closed modal"
-  @wait.until{@driver.find_element(css:@modal_close).displayed?}
-  @driver.find_element(css:@modal_close).click
+ @page.click_modal_close
 end
 
 #2 Collections/Categories
 When('I click the Shop Our Lobster & Crawfish Collection button') do 
-  puts "Clicked Shop Now"
-  @wait.until{@driver.find_element(css:@crawfish_link).displayed?}
-  @driver.find_element(css:@crawfish_link).click   
+  puts "Clicked Crafwish Collection"
+  @page.click_crawfish_collection
 end
 #3.Product Detail Page
 When('I click Lobster dog costume') do  
